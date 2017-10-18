@@ -28,6 +28,7 @@ contract QuasacoinTokenLocker {
     function confirmMint(address _to, uint _ammount) public {
         require(msg.sender == owner1Address || msg.sender == owner2Address);
         require(_ammount == mintUnlockedAmmount);
+        require(mintUnlockedTo == _to);
         require(mintUnlockedBy != 0x0 && mintUnlockedBy != msg.sender);
 
         mintUnlockedBy = 0x0;
