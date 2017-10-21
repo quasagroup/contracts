@@ -55,6 +55,9 @@ contract QuasacoinTokenCrowdsale {
     require(_wallet != 0x0);
 
     token = QuasacoinToken(_quasacoinTokenAddress);
+    tokenOwner = _tokenOwner;
+    wallet = _wallet;
+
     // 15.11.17 00:00:00 (1510704000) 
     startPreICOTime = 1510704000;
     // 29.11.17 00:00:00 (1511913600)
@@ -74,8 +77,6 @@ contract QuasacoinTokenCrowdsale {
     capPreICO = 1850 ether;
     capICO = 58892 ether;
 
-
-    wallet = _wallet;
   }
 
   // fallback function can be used to buy tokens
