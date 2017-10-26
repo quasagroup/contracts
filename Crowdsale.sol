@@ -66,13 +66,13 @@ contract QuasacoinTokenCrowdsale {
     endTime = 1514592000;
     
     
-    // preICO 0.00016ETH = 160szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
-    // => 16 000 000 wei unit = 1 QUAunits
-    ratePreICO = 16000000;
+    // preICO 0.00016ETH = 166,6666 szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
+    // => 1 666 666 wei unit = 1 QUAunits
+    ratePreICO = 1666666;
 
-    // preICO 0.00033ETH = 330szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
-    // => 33 000 000 wei unit = 1 QUAunits
-    rateICO = 33000000;
+    // ICO 0.00032ETH = 323,3333 szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
+    // => 3 333 333 wei unit = 1 QUAunits
+    rateICO = 3333333;
 
     capPreICO = 1850 ether;
     capICO = 58892 ether;
