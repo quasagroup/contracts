@@ -1,7 +1,6 @@
 pragma solidity ^0.4.11;
 
 import './QuasacoinToken.sol';
-import './base.sol';
 
 /**
  * @title QuasocoinCrowdsale
@@ -58,21 +57,19 @@ contract QuasacoinTokenCrowdsale {
     tokenOwner = _tokenOwner;
     wallet = _wallet;
 
-    // 15.11.17 00:00:00 (1510704000) 
-    startPreICOTime = 1510704000;
-    // 29.11.17 00:00:00 (1511913600)
-    startICOTime = 1511913600;
-    // 30.12.17 00:00:00 (1514592000)
-    endTime = 1514592000;
+    // 15.01.18 00:00:00 (1515974400) 
+    startPreICOTime = 1515974400;
+    // 15.02.18 00:00:00 (1518652800)
+    startICOTime = 1518652800;
+    // 26.03.18 00:00:00 (1522022400)
+    endTime = 1522022400;
     
     
-    // preICO 0.0001666666ETH = 166,6666 szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
-    // => 1 666 666 wei unit = 1 QUAunits
-    ratePreICO = 1666666;
+    // Pre-ICO, 1 ETH = 6000 QUA
+    ratePreICO = 6000;
 
-    // ICO 0.0003333333ETH = 323,3333 szabo (1^12 wei units) = 1 QUA (10^8 QUAunits)
-    // => 3 333 333 wei unit = 1 QUAunits
-    rateICO = 3333333;
+    // ICO, 1 ETH = 3000 QUA
+    rateICO = 3000;
 
     capPreICO = 1850 ether;
     capICO = 58892 ether;
@@ -95,11 +92,11 @@ contract QuasacoinTokenCrowdsale {
     uint256 tokens;
     if(now < startICOTime) {  
       weiRaisedPreICO = weiRaisedPreICO.add(weiAmount);
-      tokens = weiAmount / ratePreICO;
+      tokens = weiAmount * ratePreICO;
     } 
     else {
       weiRaisedICO = weiRaisedICO.add(weiAmount);
-      tokens = weiAmount / rateICO;
+      tokens = weiAmount * rateICO;
     }
 
 
@@ -142,7 +139,7 @@ contract QuasacoinTokenCrowdsale {
   }
 
   function returnTokenOwnership() public {
-    require(now < startPreICOTime || now > endTime  || (now > startICOTime && hasEnded()));
+    require(now < startPreICOTime || now > endTime  || (now >= startICOTime && hasEnded()));
     token.transferOwnership(tokenOwner);
   }
 
